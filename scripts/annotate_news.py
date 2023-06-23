@@ -8,8 +8,8 @@ import os
 if __name__ == "__main__":
     import json
 
-    input_dir = "../../data/fake_news_corpus_spanish/news"
-    output_dir = "../../data/fake_news_corpus_spanish/claims"
+    input_dir = "/Users/cbadenes/investigation/Fake_News/data/fake_news_corpus_spanish/news"
+    output_dir = "/Users/cbadenes/investigation/Fake_News/data/fake_news_corpus_spanish/claims"
 
     if not os.path.exists(output_dir):    
         os.makedirs(output_dir)
@@ -28,6 +28,5 @@ if __name__ == "__main__":
             json_out = json.dumps(news, ensure_ascii=False, indent=4)
             outfile.write(json_out)    
             print(json_out)
-        break
 
     file.close() 
