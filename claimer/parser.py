@@ -52,7 +52,7 @@ def get_corefs(input_text):
     #print("Cluster Spans:", clusters)
 
     labels = preds[0].get_clusters()
-    print("Cluster Tokens:",labels)
+    #print("Cluster Tokens:",labels)
 
     return (clusters,labels)
 
