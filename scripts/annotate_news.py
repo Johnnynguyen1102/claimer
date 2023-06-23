@@ -17,13 +17,15 @@ if __name__ == "__main__":
     file = open(f"{input_dir}/full_date.json")
     data = json.load(file)
 
-    counter = 0
+    counter = -1
     for news in data:
-        print(f"[{counter}]processing news",news['id'])
         counter += 1
-        facts = paragraph.get_claims(news['claim'])
-        news['facts'] = facts
         json_path = f"{output_dir}/{news['id']}.json"
+        if (os.path.isfile(json_path)):
+            continue
+        print(f"[{counter}]processing news",news['id'])        
+        facts = paragraph.get_claims(news['claim'])
+        news['facts'] = facts        
         with open(json_path , "w") as outfile:
             json_out = json.dumps(news, ensure_ascii=False, indent=4)
             outfile.write(json_out)    

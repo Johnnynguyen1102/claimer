@@ -2,9 +2,31 @@ from claimer import parser
 
 def get_claims(text):
     
-    (clusters, cluster_names) = parser.get_corefs(text)
-    #print(cluster_names)
     tokens = parser.get_tokens(text)
+    print("Num Tokens:",len(tokens))
+
+    clusters = []
+    cluster_names = []
+    partial_content = []
+    current_sentence = None
+    for i in tokens:
+        t = tokens[i]
+        if (len(partial_content)>250):
+            if (current_sentence != t['sentence']):
+                partial_text = "".join(partial_content)
+                (partial_clusters, partial_cluster_names) = parser.get_corefs(partial_text)
+                clusters.extend(partial_clusters)
+                cluster_names.extend(partial_cluster_names)
+                current_sentence = t['sentence']
+                partial_content = [t['text_with_ws']]
+            else:
+                partial_content.append(t['text_with_ws'])                
+        else:
+            partial_content.append(t['text_with_ws'])
+            current_sentence = t['sentence']
+
+    #(clusters, cluster_names) = parser.get_corefs(text)
+    print(cluster_names)
 
     cluster_labels = {}
     for idx, cluster in enumerate(clusters):

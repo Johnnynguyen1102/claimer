@@ -77,6 +77,7 @@ def get_tokens(text):
             'text_with_ws' : t.text_with_ws,
             'pos'  : t.pos_,
             'tag'  : t.tag_,
+            'sentence': t.sent,
             'level' : 99999
         }
         if (id in entities):
