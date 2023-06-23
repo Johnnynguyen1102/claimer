@@ -53,4 +53,4 @@ for i,claim in enumerate(claims):
 
 ## Note
 
-The Entity Linker at the current state is still experimental and should not be used in production mode.
+The Claimer at the current state is still experimental and should not be used in production mode.
